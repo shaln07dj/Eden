@@ -1,23 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
 
+import { useSelector, useDispatch } from "react-redux";
+import {updateStatus} from './slice/navigationSlice';
+import Welcome from './components/Welcome';
+import Home from './components/Home';
+import Container from './components/Container';
+
 function App() {
+  const dispatch = useDispatch()
+  const siteInfo = useSelector(state=> state.info);
+  // console.log(siteInfo.siteInfo.info.welcome.active)
+
+  const handleClick = ()=>{
+    console.log("Clicked")
+    dispatch(updateStatus({
+      "welcome":"active",
+      "home" :"active",
+
+    }))
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* {siteInfo.siteInfo.info.welcome.welcomeActive&& <Welcome/>}
+      {siteInfo.siteInfo.info.home.homeActive&& <Home/>}
+      <button onClick={handleClick}>Hide</button> */}
+      <Container/>
     </div>
   );
 }
