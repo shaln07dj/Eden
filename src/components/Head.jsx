@@ -42,6 +42,9 @@ console.log("UseEffect Called...!")
           "planing":{
             "planingActive":false,
             "planingVisited":false
+        },"final":{
+          "active":false,
+          "visited":false
         }
       
           }))
@@ -64,6 +67,9 @@ console.log("UseEffect Called...!")
         "planing":{
           "planingActive":false,
           "planingVisited":false
+      },"final":{
+        "active":false,
+        "visited":false
       }
     
         }))
@@ -86,6 +92,10 @@ console.log("UseEffect Called...!")
       "planing":{
         "planingActive":true,
         "planingVisited":false
+    },
+    "final":{
+      "active":false,
+      "visited":false
     }
   
       }))
@@ -109,6 +119,9 @@ const handleFour = ()=>{
     "planing":{
       "planingActive":false,
       "planingVisited":true
+  }, "final":{
+    "active":false,
+    "visited":true
   }
 
     }))
@@ -155,7 +168,7 @@ const handleFour = ()=>{
 
 </div>
 <div className={styles.one}>
-           <div onClick={handleFour}className={`${siteInfo.siteInfo.info.final.visited===true? styles.roundVisited4 : styles.round4}`}>
+           <div onClick={handleFour}className={`${siteInfo.siteInfo.info.final.visited===true? styles.roundVisited4 : siteInfo.siteInfo.info.final.visited===false?styles.round4:styles.round4}`}>
            <div className={styles.roundInner}>4</div>
            </div>
           
