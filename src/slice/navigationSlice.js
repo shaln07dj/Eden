@@ -5,19 +5,19 @@ const initialState = {
         "info":{
             "welcome": {
                 "welcomeActive":true,
-                "welcomeVisted":false
+                "welcomeVisited":false
             },
             "home":{
-                "HomeActive":true,
-                "HomeVisted":false
+                "homeActive":false,
+                "homeVisited":false
             },
             "planing":{
-                "active":true,
-                "visted":false
+                "planingActive":false,
+                "planingVisited":false
             },
             "final":{ 
-                "active":true,
-                "visted":false
+                "active":false,
+                "visited":false
             }
         }
         
@@ -30,13 +30,50 @@ const infoSlice = createSlice({
     initialState,
     reducers:{
         updateStatus(state,action){
-            if (action.payload.welcome==="active"){
-                state.siteInfo.info.welcome.welcomeActive=!state.siteInfo.info.welcome.welcomeActive
+            if (action.payload?.welcome?.welcomeActive===true){
+                state.siteInfo.info.welcome.welcomeActive=true
             }
-            if (action.payload.home==="active"){
-                state.siteInfo.info.home.homeActive=!state.siteInfo.info.home.homeActive
+            if (action.payload?.welcome?.welcomeActive===false){
+                state.siteInfo.info.welcome.welcomeActive=false
             }
-            console.log(action.payload.welcome)
+            if(action.payload?.welcome?.welcomeVisited===true){
+                state.siteInfo.info.welcome.welcomeVisited=true
+            }
+
+            if(action.payload?.welcome?.welcomeVisited===false){
+                state.siteInfo.info.welcome.welcomeVisited=false
+            }
+            if (action.payload?.home?.homeActive===true ){
+                state.siteInfo.info.home.homeActive=true
+            }
+            if (action.payload?.home?.homeActive===false ){
+                state.siteInfo.info.home.homeActive=false
+            }
+            if (action.payload?.home?.homeVisited===true ){
+                state.siteInfo.info.home.homeVisited=true
+            }
+            if (action.payload?.home?.homeVisited===false ){
+                state.siteInfo.info.home.homeVisited=false
+            }
+            if (action.payload?.planing?.planingActive===true ){
+                state.siteInfo.info.planing.planingActive=true
+            }
+            if (action.payload?.planing?.planingActive===false ){
+                state.siteInfo.info.planing.planingActive=false
+            }
+            if (action.payload?.planing?.planingVisited===true ){
+                state.siteInfo.info.planing.planingVisited=true
+            }
+            if (action.payload?.planing?.planingVisited===false ){
+                state.siteInfo.info.planing.planingVisited=false
+            }
+            if (action.payload?.final?.active===false ){
+                state.siteInfo.info.final.active=false
+            }
+            if (action.payload?.final?.visited===true ){
+                state.siteInfo.info.final.visited=true
+            }
+            console.log(action.payload?.welcome)
         }
     }
 });
