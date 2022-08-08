@@ -10,6 +10,7 @@ import infoSlice from './slice/navigationSlice';
 const store = configureStore({
   reducer:{
     info:infoSlice,
+    
   }
 })
 
