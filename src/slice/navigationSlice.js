@@ -22,6 +22,22 @@ const initialState = {
         }
         
 
+    },
+    isvalid:{
+            welcome:{
+                valid:false
+            },
+            home:{
+                valid:false
+            },
+            planing:{
+                valid:false
+            },
+            final:{
+                valid:false
+            }
+
+
     }
 };
 
@@ -55,6 +71,7 @@ const infoSlice = createSlice({
             if (action.payload?.home?.homeVisited===false ){
                 state.siteInfo.info.home.homeVisited=false
             }
+
             if (action.payload?.planing?.planingActive===true ){
                 state.siteInfo.info.planing.planingActive=true
             }
@@ -67,16 +84,33 @@ const infoSlice = createSlice({
             if (action.payload?.planing?.planingVisited===false ){
                 state.siteInfo.info.planing.planingVisited=false
             }
+
+            if (action.payload?.final?.active===true ){
+                state.siteInfo.info.final.active=true
+            }
             if (action.payload?.final?.active===false ){
                 state.siteInfo.info.final.active=false
             }
             if (action.payload?.final?.visited===true ){
                 state.siteInfo.info.final.visited=true
             }
+            if (action.payload?.final?.visited===false ){
+                state.siteInfo.info.final.visited=false
+            }
             console.log(action.payload?.welcome)
         }
     }
 });
+
+const isvalidSlice = createSlice({
+    name:'isValid',
+    initialState,
+    reducers:{
+        updateValidation(state,action){
+
+        }
+    }
+})
 
 export const {updateStatus} = infoSlice.actions
 export default infoSlice.reducer;
