@@ -3,6 +3,7 @@ import React from 'react';
 import { useEffect,useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import {updateStatus} from '../slice/navigationSlice';
+import { updateValidation } from '../slice/navigationSlice';
 
 import styles from '../styles/welcome.styles.module.css'; 
 
@@ -21,7 +22,14 @@ console.log("UseEffect Called...!")
   const [active, setActive] = useState(siteInfo.siteInfo.info.welcome.welcomeActive)
   const [visited, setVisited] = useState(siteInfo.siteInfo.info.welcome.welcomeVisited)
 
-  
+  if(fullName.length>0 && dispName.length>0){
+    // siteInfo.isvalid.welcome.valid=true
+    dispatch(updateValidation({
+      "welcome":{
+        "valid":true
+      }
+    }))
+  }
   const handleClick =()=>{
         console.log("Welcome i Got Clicked..!")
         if(siteInfo.siteInfo.info.welcome.welcomeActive===true){
@@ -35,6 +43,8 @@ console.log("UseEffect Called...!")
         
   
         if(fullName.length>0 && dispName.length>0){
+          // siteInfo.isvalid.welcome.valid=true
+     
           dispatch(updateStatus({
             "welcome": {
               "welcomeActive":false,
