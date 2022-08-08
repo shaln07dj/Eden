@@ -15,6 +15,9 @@ console.log("UseEffect Called...!")
 
   const dispatch = useDispatch()
   const siteInfo = useSelector(state=> state.info);
+  const [fullName,setFullName] = useState("");
+  const [dispName,setDispName] = useState("");
+
   const [active, setActive] = useState(siteInfo.siteInfo.info.welcome.welcomeActive)
   const [visited, setVisited] = useState(siteInfo.siteInfo.info.welcome.welcomeVisited)
 
@@ -30,19 +33,27 @@ console.log("UseEffect Called...!")
         }
         
         
-        dispatch(updateStatus({
-          "welcome": {
-            "welcomeActive":false,
-            "welcomeVisited":true
-        },
-        "home":{
-          "homeActive":true,
-          "homeVisited":false
+  
+        if(fullName.length>0 && dispName.length>0){
+          dispatch(updateStatus({
+            "welcome": {
+              "welcomeActive":false,
+              "welcomeVisited":true
+          },
+          "home":{
+            "homeActive":true,
+            "homeVisited":false
+          }, "final":{ 
+            "active":false,
+            "visited":false
         }
-    
-        }))
-       props.showWelcome(false)
+      
+          }))
+          
+        props.showWelcome(false)
         props.showHome(true)
+        }
+
         // console.log(siteInfo.siteInfo.info.welcome.welcomeActive)
 
   }
@@ -66,14 +77,14 @@ console.log("UseEffect Called...!")
               <div className={styles.inputContainerOne}>
               Welcome Full Name
     
-              <input className={styles.inputs} type="" id="html" name="fav_language" />
+              <input onChange={(e)=>setFullName(e.target.value)} className={styles.inputs} type="" id="html" name="fav_language" />
 
                 
                 </div>
                 <div className={styles.inputContainerTwo}>
               Display Name
     
-              <input className={styles.inputs} type="" id="html" name="fav_language" />
+              <input onChange={(e)=>setDispName(e.target.value)} className={styles.inputs} type="" id="html" name="fav_language" />
 
                 
                 </div>
