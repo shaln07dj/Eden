@@ -21,8 +21,9 @@ console.log("UseEffect Called...!")
         setIsValid(!isvalid)
         console.log(isvalid)
     }
-    console.log(siteInfo)
+    console.log(siteInfo.isValid.welcome)
     const handleOne = ()=>{
+      if (siteInfo.isValid.welcome.valid===true){
         console.log("One Clicked");
         props.showWelcome(true)
         props.showHome(false)
@@ -49,8 +50,10 @@ console.log("UseEffect Called...!")
       
           }))
     }
+  }
     const handleTwo = ()=>{
-      console.log("One Clicked");
+      if (siteInfo.isValid.welcome.valid ===true){
+      console.log("Two Clicked", siteInfo.isValid);
       props.showWelcome(false)
       props.showHome(true)
       props.showPlaning(false)
@@ -74,7 +77,9 @@ console.log("UseEffect Called...!")
     
         }))
   }
+}
   const handleThree = ()=>{
+    if (siteInfo.isValid.home.valid ===true){
     console.log("One Clicked");
     props.showWelcome(false)
     props.showHome(false)
@@ -99,6 +104,8 @@ console.log("UseEffect Called...!")
     }
   
       }))
+
+    }
 }
 
 const handleFour = ()=>{
