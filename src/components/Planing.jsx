@@ -37,7 +37,7 @@ const Planing = (props) => {
                 },
                 "final":{ 
                   "active":false,
-                  "visited":true
+                  "visited":false
               }
            
             
@@ -64,7 +64,8 @@ const Planing = (props) => {
             </div>
             <div className={styles.bottomInnerContainer}>
               <div className={styles.bottomInnerContent}>  
-              <div className={styles.inputContainerOne}>
+              {/* <div className={styles.inputContainerOne}>
+
               Full Name
     
               <input className={styles.inputs} type="" id="html" name="fav_language" />
@@ -77,6 +78,10 @@ const Planing = (props) => {
               <input className={styles.inputs} type="" id="html" name="fav_language" />
 
                 
+                </div> */}
+                <div className={styles.bottomInnerWrapper}>
+                  <div className={styles.bottomInnerOne}></div>
+                  <div className={styles.bottomInnerTwo}></div>
                 </div>
                 <div className={styles.inputContainerOne}>
                 <button onClick={handleClick} className={styles.btnStyle}>Create Workspace</button>
