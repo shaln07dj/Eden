@@ -117,7 +117,7 @@ width: 100%;
 
 }
 .round4{
-    margin-left: -40px;
+    margin-left: -50px;
     width: 50%;
     height: 100%;
     border-radius: 50%;
@@ -125,6 +125,21 @@ width: 100%;
     border-color:#b3aee3;
     /* background-color: rgb(143, 124, 47);  */
     color: #2415c9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.roundVisited4{
+    margin-left: -50px;
+    width: 50%;
+    height: 100%;
+    border-radius: 50%;
+    border: .5px solid;
+    border-color:#b3aee3;
+    background-color: #2415c9; 
+    color: #ffff;
     display: flex;
     align-items: center;
     justify-content: center;
