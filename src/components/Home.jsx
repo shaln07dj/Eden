@@ -37,7 +37,7 @@ const Home = (props) => {
                   setVisited(true);
                 }
                 
-                
+                if(url.match(pattern)){
                 dispatch(updateStatus({
                   "home": {
                     "homeActive":false,
@@ -46,7 +46,10 @@ const Home = (props) => {
                 "planing":{
                     "planingActive":true,
                     "planingVisited":false
-                }
+                }, "final":{ 
+                  "active":false,
+                  "visited":false
+              }
 
             
                 }))
@@ -55,6 +58,7 @@ const Home = (props) => {
                 // console.log(siteInfo.siteInfo.info.welcome.welcomeActive)
         
           }
+        }
   return (
     <>
      <div  className={styles.container}>
