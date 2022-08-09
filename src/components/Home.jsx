@@ -29,7 +29,6 @@ const Home = (props) => {
 
   const focus = [first, second, third];
 
-
   if (focus[1].current === null || focus[1].current.name) {
     console.log(focus[1]);
   }
@@ -42,8 +41,6 @@ const Home = (props) => {
       console.log("UseEffect Called...!");
     },
     []);
-
-
 
   if (url.match(pattern) && name.length > 0 && urlName.length > 0) {
     dispatch(
@@ -81,17 +78,17 @@ const Home = (props) => {
           },
         })
       );
-      dispatch(updateData({
-        home:{
-          workSpaceName:name,
-          domainName:urlName,
-          workSpaceUrl:url
-      }
-      }))
+      dispatch(
+        updateData({
+          home: {
+            workSpaceName: name,
+            domainName: urlName,
+            workSpaceUrl: url,
+          },
+        })
+      );
       props.showHome(false);
       props.showPlaning(true);
-      // console.log(siteInfo.siteInfo.info.welcome.welcomeActive)
-
     }
   };
   return (
