@@ -25,7 +25,7 @@ console.log("UseEffect Called...!")
   const [visited, setVisited] = useState(siteInfo.siteInfo.info.welcome.welcomeVisited)
 
   if(fullName.length>0 && dispName.length>0){
-    // siteInfo.isvalid.welcome.valid=true
+
     dispatch(updateValidation({
       "welcome":{
         "valid":true
@@ -51,7 +51,7 @@ console.log("UseEffect Called...!")
         
   
         if(fullName.length>0 && dispName.length>0){
-          // siteInfo.isvalid.welcome.valid=true
+ 
      
           dispatch(updateStatus({
             "welcome": {
@@ -72,8 +72,7 @@ console.log("UseEffect Called...!")
         props.showHome(true)
         }
 
-        // console.log(siteInfo.siteInfo.info.welcome.welcomeActive)
-
+     
   }
   return (
     <>
