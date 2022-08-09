@@ -42,6 +42,7 @@ const initialState = {
         },
         home: {
             workSpaceName: "",
+            domainName:"",
             workSpaceUrl: "",
         },
         planing: {
@@ -132,6 +133,13 @@ const infoSlice = createSlice({
             if (action.payload?.welcome) {
                 state.data.welcome.fullName = action.payload.welcome.fullName;
                 state.data.welcome.displayName = action.payload.welcome.displayName;
+            }
+
+            if (action.payload?.home) {
+                state.data.home.workSpaceName= action.payload.home.workSpaceName;
+                state.data.home.domainName = action.payload.home.domainName;
+                state.data.home.workSpaceUrl = action.payload.home.workSpaceUrl;
+
             }
         },
     },
