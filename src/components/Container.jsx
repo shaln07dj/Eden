@@ -29,22 +29,6 @@ const Container = () => {
                 />
               </div>
               <div className={styles.bottomInnerContainer}>
-                {/* <div className={styles.topBar}>
-               <div className={styles.topBarBold}>
-                <div className={styles.topBarBoldContent}>
-                       Welcome! First things first...
-                </div>
-         
-               </div>
-               <div className={styles.topBarContent}>
-                        You can always change them later
-               </div>
-
-            </div>
-            <div className={styles.bottomInnerContent}>
-
-            </div> */}
-
                 {openWelcome && (
                   <Welcome
                     showWelcome={setOpenWelcome}
