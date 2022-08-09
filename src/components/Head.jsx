@@ -17,11 +17,7 @@ const Head = (props) => {
     [siteInfo]);
 
   const [isvalid, setIsValid] = useState(true);
-  const handleColor = () => {
-    // console.log(styles.round.value)
-    setIsValid(!isvalid);
-    console.log(isvalid);
-  };
+
   console.log(siteInfo.isValid.welcome);
   const handleOne = () => {
     if (siteInfo.isValid.welcome.valid === true) {
@@ -146,12 +142,7 @@ const Head = (props) => {
         <div className={styles.wrapper}>
           <div className={styles.container}>
             <div className={styles.content}>
-              {/* <div className={`${isvalid ==false ? styles.line : styles.line2}`}>
-           </div>
-           <div className={`${isvalid ==false ? styles.line : styles.line2}`}>
-</div> */}
               <div className={styles.one}>
-                {/* <div className={styles.roundActive}> */}
                 <div
                   onClick={handleOne}
                   className={`${
@@ -175,7 +166,6 @@ const Head = (props) => {
                 ></div>
               </div>
               <div className={styles.one}>
-                {/* <div className={styles.roundActive}> */}
                 <div
                   onClick={handleTwo}
                   className={`${
@@ -199,7 +189,6 @@ const Head = (props) => {
                 ></div>
               </div>
               <div className={styles.one}>
-                {/* <div className={styles.roundActive}> */}
                 <div
                   onClick={handleThree}
                   className={`${
