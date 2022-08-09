@@ -78,12 +78,50 @@
   width: 40%;
   height: 100%;
   background-color: darkorange;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottomInnerOneContent{
+  width: 90%;
+  height: 100%;
+  background-color: #fff;
+  border: 1px solid;
+  border-color: rgb(209, 209, 209);
+}
+
+.bottomInnerOneContentSelected{
+  width: 90%;
+  height: 100%;
+  background-color: #fff;
+  border: 1px solid;
+  border-color: #5a4ad1;
 }
 
 .bottomInnerTwo {
   width: 40%;
   height: 100%;
   background-color: darkslategrey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottomInnerTwoContent{
+  width: 90%;
+  height: 100%;
+  background-color: #fff;
+  border: 1px solid;
+  border-color: rgb(209, 209, 209);
+}
+
+.bottomInnerTwoContentSelected{
+  width: 90%;
+  height: 100%;
+  background-color: #fff;
+  border: 1px solid;
+  border-color: #5a4ad1;
 }
 .inputContainerOne {
   text-align: left;
@@ -93,6 +131,8 @@
 
   flex-direction: column;
 }
+
+
 
 .inputContainerTwo {
   margin-top: 10px;

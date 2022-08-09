@@ -14,13 +14,28 @@ const Planing = (props) => {
 
   const dispatch = useDispatch();
   const siteInfo = useSelector((state) => state.info);
+  const [firstSelected, setFirstSelected] = useState(false);
+  const [secondSelected, setSecondSelected] = useState(false);
+
   const [active, setActive] = useState(
     siteInfo.siteInfo.info.planing.planingActive
   );
   const [visited, setVisited] = useState(
     siteInfo.siteInfo.info.planing.planingVisited
   );
-
+    const handleClickOne = (e)=>{
+        setFirstSelected(true)
+        setSecondSelected(false)
+        console.log(e.currentTarget.innerHTML)
+    }
+    const handleClickTwo = (e)=>{
+        setSecondSelected(true)
+        setFirstSelected(false)
+        console.log(e.currentTarget.innerHTML)
+    }
+    // const handleContentTwo =(e)=>{
+    //   console.log(e.currentTarget.innerHTML)
+    // }
   const handleClick = () => {
     console.log("Welcome i Got Clicked..!");
     // if(siteInfo.siteInfo.info.planing.active===true){
@@ -39,7 +54,7 @@ const Planing = (props) => {
         },
         final: {
           active: false,
-          visited: false,
+          visited: true,
         },
       })
     );
@@ -78,8 +93,16 @@ const Planing = (props) => {
                 
                 </div> */}
             <div className={styles.bottomInnerWrapper}>
-              <div className={styles.bottomInnerOne}></div>
-              <div className={styles.bottomInnerTwo}></div>
+              <div className={styles.bottomInnerOne}>
+               < div onClick={handleClickOne} className={`${firstSelected ===true ? styles.bottomInnerOneContentSelected: styles.bottomInnerOneContent}`}>
+
+               </div>
+              </div>
+              <div className={styles.bottomInnerTwo}>
+              < div onClick={handleClickTwo}  className={`${secondSelected ===true ? styles.bottomInnerTwoContentSelected:styles.bottomInnerTwoContent}`}>
+                Two Con
+                </div>
+              </div>
             </div>
             <div className={styles.inputContainerOne}>
               <button onClick={handleClick} className={styles.btnStyle}>
