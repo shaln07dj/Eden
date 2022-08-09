@@ -42,12 +42,21 @@ const initialState = {
         },
         home: {
             workSpaceName: "",
-            domainName:"",
+            domainName: "",
             workSpaceUrl: "",
         },
         planing: {
-            plan1: "",
-            plan2: "",
+
+            plan1: {
+                type: '',
+                info: ",",
+                active: false
+            },
+            plan2: {
+                type: '',
+                info: ",",
+                active: false
+            }
         },
     },
 };
@@ -136,9 +145,25 @@ const infoSlice = createSlice({
             }
 
             if (action.payload?.home) {
-                state.data.home.workSpaceName= action.payload.home.workSpaceName;
+                state.data.home.workSpaceName = action.payload.home.workSpaceName;
                 state.data.home.domainName = action.payload.home.domainName;
                 state.data.home.workSpaceUrl = action.payload.home.workSpaceUrl;
+
+            }
+
+            if (action.payload?.planing) {
+
+                state.data.planing.plan1.type = action.payload.planing.plan1.type;
+                state.data.planing.plan1.info = action.payload.planing.plan1.info;
+                state.data.planing.plan1.active = action.payload.planing.plan1.active;
+
+                state.data.planing.plan2.type = action.payload.planing.plan2.type;
+                state.data.planing.plan2.info = action.payload.planing.plan2.info;
+                state.data.planing.plan2.active = action.payload.planing.plan2.active;
+
+
+
+
 
             }
         },

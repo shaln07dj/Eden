@@ -1,7 +1,7 @@
 import { useState, React, useEffect } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { updateStatus } from "../slice/navigationSlice";
+import { updateStatus, updateData } from "../slice/navigationSlice";
 
 import styles from "../styles/planing.styles.module.css";
 
@@ -14,8 +14,16 @@ const Planing = (props) => {
 
   const dispatch = useDispatch();
   const siteInfo = useSelector((state) => state.info);
-  const [firstSelected, setFirstSelected] = useState(false);
-  const [secondSelected, setSecondSelected] = useState(false);
+  const [firstSelected, setFirstSelected] = useState(
+    siteInfo.data.planing.plan1?.active
+  );
+  const [secondSelected, setSecondSelected] = useState(
+    siteInfo.data.planing.plan2?.active
+  );
+  const [plan1Type, setPlan1Type] = useState(siteInfo.data.planing.plan1?.type);
+  const [plan2Type, setPlan2Type] = useState(siteInfo.data.planing.plan2?.type);
+  const [plan1Info, setPlan1Info] = useState(siteInfo.data.planing.plan1?.info);
+  const [plan2Info, setPlan2Info] = useState(siteInfo.data.planing.plan2?.info);
 
   const [active, setActive] = useState(
     siteInfo.siteInfo.info.planing.planingActive
@@ -23,28 +31,41 @@ const Planing = (props) => {
   const [visited, setVisited] = useState(
     siteInfo.siteInfo.info.planing.planingVisited
   );
-    const handleClickOne = (e)=>{
-        setFirstSelected(true)
-        setSecondSelected(false)
-        console.log(e.currentTarget.innerHTML)
-    }
-    const handleClickTwo = (e)=>{
-        setSecondSelected(true)
-        setFirstSelected(false)
-        console.log(e.currentTarget.innerHTML)
-    }
-    // const handleContentTwo =(e)=>{
-    //   console.log(e.currentTarget.innerHTML)
-    // }
+  const handleClickOne = (e) => {
+    setFirstSelected(true);
+    setSecondSelected(false);
+  };
+  const handleClickTwo = (e) => {
+    setSecondSelected(true);
+    setFirstSelected(false);
+  };
+
+  const handlePlanOne = (e) => {
+    console.log(e.currentTarget.innerHTML);
+    let text = e.currentTarget.innerHTML;
+    let pos = text.search("</h4>");
+    let result = text.slice(4, pos);
+    let planinfo = text.split(`<h4>${result}</h4>`);
+    setPlan1Type(result);
+    console.log(result);
+    setPlan1Info(planinfo[1]);
+    console.log(planinfo[1]);
+  };
+
+  const handlePlanTwo = (e) => {
+    console.log(e.currentTarget.innerHTML);
+    let text = e.currentTarget.innerHTML;
+    let pos = text.search("</h4>");
+    let result = text.slice(4, pos);
+    let planinfo = text.split(`<h4>${result}</h4>`);
+
+    console.log(result);
+    setPlan2Type(result);
+    setPlan2Info(planinfo[1]);
+    console.log(planinfo[1]);
+  };
   const handleClick = () => {
     console.log("Welcome i Got Clicked..!");
-    // if(siteInfo.siteInfo.info.planing.active===true){
-    //   setActive(false);
-    // }
-
-    // if (siteInfo.siteInfo.info.planing.visited===false){
-    //   setVisited(true);
-    // }
 
     dispatch(
       updateStatus({
@@ -58,9 +79,25 @@ const Planing = (props) => {
         },
       })
     );
+
+    dispatch(
+      updateData({
+        planing: {
+          plan1: {
+            type: plan1Type,
+            info: plan1Info,
+            active: firstSelected,
+          },
+          plan2: {
+            type: plan2Type,
+            info: plan2Info,
+            active: secondSelected,
+          },
+        },
+      })
+    );
     props.showPlaning(false);
     props.showFinal(true);
-    // console.log(siteInfo.siteInfo.info.welcome.welcomeActive)
   };
   return (
     <>
@@ -77,30 +114,41 @@ const Planing = (props) => {
         </div>
         <div className={styles.bottomInnerContainer}>
           <div className={styles.bottomInnerContent}>
-            {/* <div className={styles.inputContainerOne}>
-
-              Full Name
-    
-              <input className={styles.inputs} type="" id="html" name="fav_language" />
-
-                
-                </div>
-                <div className={styles.inputContainerTwo}>
-              Display Name
-    
-              <input className={styles.inputs} type="" id="html" name="fav_language" />
-
-                
-                </div> */}
             <div className={styles.bottomInnerWrapper}>
               <div className={styles.bottomInnerOne}>
-               < div onClick={handleClickOne} className={`${firstSelected ===true ? styles.bottomInnerOneContentSelected: styles.bottomInnerOneContent}`}>
-
-               </div>
+                <div
+                  onClick={handleClickOne}
+                  className={`${
+                    firstSelected === true
+                      ? styles.bottomInnerOneContentSelected
+                      : styles.bottomInnerOneContent
+                  }`}
+                >
+                  <div
+                    onClick={handlePlanOne}
+                    className={styles.bottomInnerOneInner}
+                  >
+                    <h4>For Myself</h4>
+                    Write better. Think more clearly. Stay organized.
+                  </div>
+                </div>
               </div>
               <div className={styles.bottomInnerTwo}>
-              < div onClick={handleClickTwo}  className={`${secondSelected ===true ? styles.bottomInnerTwoContentSelected:styles.bottomInnerTwoContent}`}>
-                Two Con
+                <div
+                  onClick={handleClickTwo}
+                  className={`${
+                    secondSelected === true
+                      ? styles.bottomInnerTwoContentSelected
+                      : styles.bottomInnerTwoContent
+                  }`}
+                >
+                  <div
+                    onClick={handlePlanTwo}
+                    className={styles.bottomInnerOneInner}
+                  >
+                    <h4>With My Team</h4>
+                    Wikis, docs, tasks & projects, all in one palce.
+                  </div>
                 </div>
               </div>
             </div>
