@@ -3,25 +3,37 @@ import { useState, React, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { updateStatus } from "../slice/navigationSlice";
-import { updateValidation } from "../slice/navigationSlice";
+import { updateValidation, updateData } from "../slice/navigationSlice";
 
 import styles from "../styles/home.styles.module.css";
 
 const Home = (props) => {
   const pattern = "^www.[a-z0-9-]+(?:.[a-z0-9-]+)*.com/";
-  const [url, setUrl] = useState("");
-  const [name, setName] = useState("");
-  const [urlName, setUrlName] = useState("");
+  const siteInfo = useSelector((state) => state.info);
+  const [url, setUrl] = useState(siteInfo.data.home.workSpaceUrl);
+  const [name, setName] = useState(siteInfo.data.home.workSpaceName);
+  const [urlName, setUrlName] = useState(siteInfo.data.home.domainName);
+
+  const [active, setActive] = useState(siteInfo.siteInfo.info.home.homeActive);
+  const [visited, setVisited] = useState(
+    siteInfo.siteInfo.info.home.homeVisited
+  );
+  const [workSpaceName, setWorkSpaceName] = useState();
+  const [workSpaceUrl, setWorkSpaceUrl] = useState();
+
+  const dispatch = useDispatch();
 
   const first = useRef(null);
   const second = useRef(null);
   const third = useRef(null);
 
   const focus = [first, second, third];
+
+
   if (focus[1].current === null || focus[1].current.name) {
     console.log(focus[1]);
   }
-  if (url.match(pattern) && focus[0].current.name == "Work Space Name") {
+  if (url.match(pattern) && focus[0].current?.name == "Work Space Name") {
     focus[2].current.focus();
   }
 
@@ -31,12 +43,7 @@ const Home = (props) => {
     },
     []);
 
-  const dispatch = useDispatch();
-  const siteInfo = useSelector((state) => state.info);
-  const [active, setActive] = useState(siteInfo.siteInfo.info.home.homeActive);
-  const [visited, setVisited] = useState(
-    siteInfo.siteInfo.info.home.homeVisited
-  );
+
 
   if (url.match(pattern) && name.length > 0 && urlName.length > 0) {
     dispatch(
@@ -74,9 +81,17 @@ const Home = (props) => {
           },
         })
       );
+      dispatch(updateData({
+        home:{
+          workSpaceName:name,
+          domainName:urlName,
+          workSpaceUrl:url
+      }
+      }))
       props.showHome(false);
       props.showPlaning(true);
       // console.log(siteInfo.siteInfo.info.welcome.welcomeActive)
+
     }
   };
   return (
@@ -104,6 +119,7 @@ const Home = (props) => {
                 id="html"
                 name="Work Space Name"
                 placeholder="Eden"
+                value={name}
               />
             </div>
             <div className={styles.inputContainerTwo}>
@@ -117,6 +133,7 @@ const Home = (props) => {
                   id="html"
                   name="urlDomain"
                   placeholder="www.edwn.com/"
+                  value={url}
                 />
                 <input
                   onChange={(e) => setUrlName(e.target.value)}
@@ -126,6 +143,7 @@ const Home = (props) => {
                   id="html"
                   name="urlName"
                   placeholder="Example"
+                  value={urlName}
                 />
               </div>
             </div>
