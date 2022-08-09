@@ -58,7 +58,7 @@
   width: 100%;
   height: 70%;
 
-  background-color: deeppink;
+  /* background-color: deeppink; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,7 +68,7 @@
 .bottomInnerWrapper {
   width: 100%;
   height: 70%;
-  background-color: cornsilk;
+  /* background-color: cornsilk; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,52 +77,87 @@
 .bottomInnerOne {
   width: 40%;
   height: 100%;
-  background-color: darkorange;
+  /* background-color: darkorange; */
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.bottomInnerOneContent{
+.bottomInnerOneContent {
   width: 90%;
   height: 100%;
   background-color: #fff;
   border: 1px solid;
   border-color: rgb(209, 209, 209);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ba0ab;
 }
 
-.bottomInnerOneContentSelected{
+.bottomInnerOneInner {
+  width: 90%;
+  height: 100;
+  text-align: left;
+}
+
+.bottomInnerOneContentSelected {
   width: 90%;
   height: 100%;
   background-color: #fff;
   border: 1px solid;
   border-color: #5a4ad1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ba0ab;
 }
 
 .bottomInnerTwo {
   width: 40%;
   height: 100%;
-  background-color: darkslategrey;
+  /* background-color: darkslategrey; */
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.bottomInnerTwoContent{
+.bottomInnerOneInner,
+.bottomInnerTwoInner h4 {
+  color: #000;
+}
+
+.bottomInnerTwoContent {
   width: 90%;
   height: 100%;
   background-color: #fff;
   border: 1px solid;
   border-color: rgb(209, 209, 209);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ba0ab;
 }
 
-.bottomInnerTwoContentSelected{
+.bottomInnerTwoInner {
+  width: 90%;
+  height: 100;
+  text-align: left;
+  background-color: coral;
+}
+
+.bottomInnerTwoContentSelected {
   width: 90%;
   height: 100%;
-  background-color: #fff;
+
   border: 1px solid;
   border-color: #5a4ad1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ba0ab;
 }
+
 .inputContainerOne {
   text-align: left;
   width: 80%;
@@ -131,8 +166,6 @@
 
   flex-direction: column;
 }
-
-
 
 .inputContainerTwo {
   margin-top: 10px;
