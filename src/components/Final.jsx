@@ -31,10 +31,6 @@ const Final = () => {
     if (siteInfo.siteInfo.info.welcome.welcomeVisited === false) {
       setVisited(true);
     }
-
-    //  props.showWelcome(false)
-    //   props.showHome(true)
-    // console.log(siteInfo.siteInfo.info.welcome.welcomeActive)
   };
   return (
     <>
